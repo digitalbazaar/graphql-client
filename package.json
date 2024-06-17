@@ -1,0 +1,50 @@
+{
+  "name": "@digitalbazaar/ecdsa-xi-2023-cryptosuite",
+  "description": "A simple fetch()-based client for GraphQL APIs.",
+  "homepage": "https://github.com/digitalbazaar/graphql-client",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/graphql-client"
+  },
+  "type": "module",
+  "exports": "./lib/client.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+  "c8": "^9.1.0",
+  "chai": "^4.3.6",
+  "cross-env": "^7.0.3",
+  "eslint": "^8.56.0",
+  "eslint-config-digitalbazaar": "^5.0.1",
+  "eslint-plugin-jsdoc": "^48.0.4",
+  "eslint-plugin-unicorn": "^50.0.1",
+  "karma": "^6.4.2",
+  "karma-chai": "^0.1.0",
+  "karma-chrome-launcher": "^3.2.0",
+  "karma-mocha": "^2.0.1",
+  "karma-mocha-reporter": "^2.2.5",
+  "karma-sourcemap-loader": "^0.4.0",
+  "karma-webpack": "^5.0.1",
+  "mocha": "^10.2.0",
+  "mocha-lcov-reporter": "^1.3.0",
+  "webpack": "^5.90.1"},
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "npm run test-node",
+    "test-karma": "karma start karma.conf.cjs",
+    "test-node": "cross-env NODE_ENV=test mocha --preserve-symlinks -t 30000 -A -R ${REPORTER:-spec} --require test/test-mocha.js test/*.spec.js",
+    "coverage": "cross-env NODE_ENV=test c8 npm run test-node",
+    "coverage-ci": "cross-env NODE_ENV=test c8 --reporter=lcovonly --reporter=text-summary --reporter=text npm run test-node",
+    "coverage-report": "c8 report",
+    "lint": "eslint ."
+  },
+  "c8": {
+    "reporter": [
+      "lcov",
+      "text-summary",
+      "text"
+    ]
+  }
+}
